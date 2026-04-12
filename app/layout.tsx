@@ -49,7 +49,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${GeistPixelGrid.variable} ${GeistPixelCircle.variable} ${GeistPixelTriangle.variable} ${GeistPixelLine.variable}  ${GeistPixelSquare.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-screen flex flex-col bg-primary">
-        <div className="sticky top-0 mt-5">
+        <div className="fixed top-0 inset-x-0 pt-5 z-50 pointer-events-none">
           <NavBar items={items} />
         </div>
         <main className="flex-1 flex">{children}</main>
