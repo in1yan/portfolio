@@ -1,4 +1,5 @@
 import gsap from "gsap";
+import Link from "next/link";
 import { useRef } from "react";
 
 type ButtonType = {
@@ -34,7 +35,9 @@ export default function RetroButton(ButtonInfo: ButtonType) {
           ref={bgRef}
           className="absolute bottom-0 left-0 w-full h-full bg-[#ff3b3b] origin-bottom scale-x-0"
         />
-        <p className="relative">{ButtonInfo.Label}</p>
+        <Link href="#">
+          <p className="relative">{ButtonInfo.Label}</p>
+        </Link>
       </div>
       <span className="text-3xl">]</span>
     </div>

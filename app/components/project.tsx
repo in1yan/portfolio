@@ -1,11 +1,13 @@
 import Image from "next/image";
-
+import gsap from "gsap";
+import { useEffect } from "react";
 interface ProjectProps {
   title: string;
   subtitle: string;
   description: React.ReactNode;
   imageSrc: string;
   tags: string[];
+  isFirst?: boolean;
 }
 
 export default function Project({
@@ -14,9 +16,12 @@ export default function Project({
   description,
   imageSrc,
   tags,
+  isFirst,
 }: ProjectProps) {
   return (
-    <div className="panel relative w-screen">
+    <div
+      className={`relative w-screen ${isFirst ? "projects-image" : "panel"}`}
+    >
       <Image
         src={imageSrc}
         alt={title}
@@ -26,7 +31,7 @@ export default function Project({
       />
       <div className="absolute text-white top-110 inset-0 bg-linear-to-t from-black/90 to-transparent">
         <div className="flex flex-col">
-          <p className="text-[25vh] pl-15 font-extrabold uppercase leading-none">
+          <p className="title text-[25vh] pl-15 font-extrabold uppercase leading-none">
             {title}
           </p>
           <p className="text-2xl pt-10 pl-20 font-bold uppercase text-secondary">

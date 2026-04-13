@@ -3,6 +3,42 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
 import Project from "../project";
+
+const project_data = [
+  {
+    title: "Demo",
+    subtitle: "World Saving Project",
+    description: (
+      <>
+        This is a Project written to save the world <br /> from ending in 5 days
+      </>
+    ),
+    imageSrc: "/melouz.png",
+    tags: ["NextJS", "FastAPI", "Redis", "Postgres"],
+  },
+  {
+    title: "Demo",
+    subtitle: "World Saving Project",
+    description: (
+      <>
+        This is a Project written to save the world <br /> from ending in 5 days
+      </>
+    ),
+    imageSrc: "/melouz.png",
+    tags: ["NextJS", "FastAPI", "Redis", "Postgres"],
+  },
+  {
+    title: "Demo",
+    subtitle: "World Saving Project",
+    description: (
+      <>
+        This is a Project written to save the world <br /> from ending in 5 days
+      </>
+    ),
+    imageSrc: "/melouz.png",
+    tags: ["NextJS", "FastAPI", "Redis", "Postgres"],
+  },
+];
 export default function Projects() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -51,18 +87,17 @@ export default function Projects() {
           ref={containerRef}
           className="projects-container flex h-full w-max"
         >
-          <div className="projects-image relative w-screen shrink-0">
-            <Image
-              src="/demo.png"
-              alt="demo"
-              fill
-              sizes="100vw"
-              className="object-cover"
+          {project_data.map((proj, index) => (
+            <Project
+              key={index}
+              title={proj.title}
+              subtitle={proj.subtitle}
+              imageSrc={proj.imageSrc}
+              description={proj.description}
+              tags={proj.tags}
+              isFirst={index === 0}
             />
-          </div>
-          <Project />
-          <Project />
-          <Project />
+          ))}
         </div>
       </div>
     </section>

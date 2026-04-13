@@ -31,7 +31,7 @@ export default function Hero() {
         duration: 1,
       });
     gsap.fromTo(
-      ".cursor",
+      ".block-cursor",
       {
         opacity: 1,
       },
@@ -65,7 +65,7 @@ export default function Hero() {
           <div className="flex flex-col">
             <div className="flex items-center  gap-5">
               <p className="name text-9xl font-pixel-grid"></p>
-              <div className="cursor w-10 h-30 bg-secondary mt-0"></div>
+              <div className="block-cursor w-10 h-30 bg-secondary mt-0"></div>
             </div>
             <p className="role text-secondary pt-10 text-2xl font-bold font-pixel-line">
               ./ FULL STACK DEVELOPER : )
