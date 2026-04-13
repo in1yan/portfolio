@@ -1,10 +1,13 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 
 const config = {
   symbols: ["O", "x", "*", ">", "$", "W"],
   blockSize: 25,
   detectionRadius: 50,
-  clusterSIze: 7,
+  clusterSize: 7,
   blockLifetime: 300,
   emptyRatio: 0.3,
   scrambleRatio: 0.25,
@@ -14,7 +17,10 @@ function getRandomSymbol() {
   return config.symbols[Math.floor(Math.random() * config.symbols.length)];
 }
 
-function initGridOverlay(element) {
+function initGridOverlay(element: HTMLElement) {
+  // Prevent duplicate overlays in Strict Mode
+  if (element.querySelector(".grid-overlay")) return () => {};
+
   const gridOverlay = document.createElement("div");
   gridOverlay.className = "grid-overlay";
 
@@ -34,7 +40,7 @@ function initGridOverlay(element) {
       block.style.width = `${config.blockSize}px`;
       block.style.height = `${config.blockSize}px`;
       block.style.left = `${col * config.blockSize}px`;
-      block.style.right = `${row * config.blockSize}px`;
+      block.style.top = `${row * config.blockSize}px`;
       gridOverlay.appendChild(block);
 
       blocks.push({
@@ -51,12 +57,12 @@ function initGridOverlay(element) {
     }
   }
   element.appendChild(gridOverlay);
-  element.addEventListener("mouseevent", (e) => {
+  const handleMouseMove = (e: MouseEvent) => {
     const rect = element.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
 
-    let closesetBlock = null;
+    let closesetBlock: any = null;
     let closestDistance = Infinity;
     for (const block of blocks) {
       const dx = mouseX - block.x;
@@ -81,7 +87,7 @@ function initGridOverlay(element) {
       }, config.scrambleInterval);
     }
 
-    const clusterCount = Math.floor(Math.random() * config.clusterSIze) + 1;
+    const clusterCount = Math.floor(Math.random() * config.clusterSize) + 1;
     let currentBlock = closesetBlock;
     const activeBlocks = [closesetBlock];
     for (let i = 0; i < clusterCount; i++) {
@@ -107,7 +113,11 @@ function initGridOverlay(element) {
       activeBlocks.push(randomNeighbour);
       currentBlock = randomNeighbour;
     }
-  });
+  };
+
+  element.addEventListener("mousemove", handleMouseMove as EventListener);
+
+  let animationFrameId: number;
   function updateHighlightens() {
     const currentTime = Date.now();
 
@@ -129,16 +139,28 @@ function initGridOverlay(element) {
       }
     });
 
-    requestAnimationFrame(updateHighlightens);
+    animationFrameId = requestAnimationFrame(updateHighlightens);
   }
   updateHighlightens();
+
+  return () => {
+    element.removeEventListener("mousemove", handleMouseMove as EventListener);
+    cancelAnimationFrame(animationFrameId);
+    blocks.forEach((b) => {
+      if (b.scrambleInterval) clearInterval(b.scrambleInterval);
+    });
+    gridOverlay.remove();
+  };
 }
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".hover-img").forEach((element) => {
-    initGridOverlay(element);
-  });
-});
+
 export default function ImgSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const cleanup = initGridOverlay(containerRef.current);
+    return cleanup;
+  }, []);
   return (
     <section className="container">
       <style>
@@ -157,23 +179,23 @@ export default function ImgSection() {
           }
 
           .grid-overlay {
-          position: absolute;
-          top: 0;
-          lefet: 0;
-          width: 100%;
-          height: 100%;
-          pointer-events: none;
-          z-index: 2;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
           }
 
           .grid-block {
             position: absolute;
             display: flex;
-            justify-content: cetner;
+            justify-content: center;
             align-items: center;
             background-color: #1a1a1a;
             color: white;
-            font-family: mono;
+            font-family: monospace;
             font-size: 20px;
             font-weight: 400;
             opacity: 0;
@@ -184,7 +206,7 @@ export default function ImgSection() {
         `}
       </style>
 
-      <div className="hover-img">
+      <div ref={containerRef} className="hover-img">
         <Image
           src="/demo.png"
           sizes="100vw"
