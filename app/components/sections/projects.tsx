@@ -23,21 +23,20 @@ export default function Projects() {
       },
     );
     gsap.to(".projects-container", {
-      xPercent: -200,
+      x: "-200vw",
       ease: "none",
       scrollTrigger: {
         trigger: ".projects",
         start: "top top",
-        end: "bottom bottom",
+        end: "+=200%",
         scrub: true,
         pin: true,
-        markers: true,
       },
     });
   }, []);
   return (
-    <section className="projects relative h-[300vh]">
-      <div className="sticky top-0 h-screen">
+    <section className="projects relative overflow-hidden">
+      <div className="h-screen">
         <div className="projects-container flex h-full w-[300vw]">
           <div className="projects-image relative w-screen">
             <Image
