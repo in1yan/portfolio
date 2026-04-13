@@ -34,7 +34,15 @@ export default function Home() {
       duration: 0.4,
       ease: "power3",
     });
-
+    gsap.to(".progress-bar", {
+      scaleX: 1,
+      scrollTrigger: {
+        trigger: document.body,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
     yTo.current = gsap.quickTo(cursorRef.current, "y", {
       duration: 0.4,
       ease: "power3",

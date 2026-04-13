@@ -183,7 +183,10 @@ interface ScrambleImageProps {
   altText: string;
 }
 
-export default function ScrambleImage({ imageSrc, altText }: ScrambleImageProps) {
+export default function ScrambleImage({
+  imageSrc,
+  altText,
+}: ScrambleImageProps) {
   const imageContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
