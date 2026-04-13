@@ -22,7 +22,9 @@ export default function Home() {
       <section className="min-h-screen flex items-center justify-center px-6 md:px-16">
         <Hero />
       </section>
-      <div className="h-60"></div>
+      <div className="h-60">
+        <p className="text-secondary font-mono">./Stuff I built</p>
+      </div>
       <Projects />
     </div>
   );

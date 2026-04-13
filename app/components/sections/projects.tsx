@@ -2,6 +2,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
+import Project from "../project";
 export default function Projects() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -59,26 +60,9 @@ export default function Projects() {
               className="object-cover"
             />
           </div>
-
-          <div className="panel relative w-screen shrink-0">
-            <Image
-              src="/demo.png"
-              alt="demo"
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
-          </div>
-
-          <div className="panel relative w-screen shrink-0">
-            <Image
-              src="/demo.png"
-              alt="demo"
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
-          </div>
+          <Project />
+          <Project />
+          <Project />
         </div>
       </div>
     </section>
