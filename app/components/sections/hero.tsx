@@ -1,17 +1,36 @@
 import RetroButton from "../RetroButton";
 import gsap from "gsap";
 import { useEffect } from "react";
-import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
+import TextPlugin from "gsap/TextPlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Dither from "@/components/Dither";
 export default function Hero() {
   useEffect(() => {
-    gsap.registerPlugin(ScrambleTextPlugin);
+    gsap.registerPlugin(TextPlugin);
+    gsap.registerPlugin(ScrollTrigger);
     const tl = gsap.timeline();
     tl.to(".name", {
-      duration: 4,
-      scrambleText: "Iniyan",
-    });
-    tl.fromTo(
+      text: {
+        value: "in1y4n",
+        delimiter: "",
+      },
+      duration: 1,
+    })
+      .to({}, { duration: 1 })
+      .to(".name", {
+        text: {
+          value: "",
+          delimiter: "",
+        },
+      })
+      .to(".name", {
+        text: {
+          value: "Iniyan",
+          delimiter: "",
+        },
+        duration: 1,
+      });
+    gsap.fromTo(
       ".cursor",
       {
         opacity: 1,
@@ -19,7 +38,7 @@ export default function Hero() {
       {
         opacity: 0,
         repeat: -1,
-        duration: 0.6,
+        duration: 0.3,
         yoyo: true,
         ease: "power2.inOut",
       },
@@ -45,17 +64,16 @@ export default function Hero() {
         <div className="grid md:grid-cols-2 items-center justify-items-center gap-5">
           <div className="flex flex-col">
             <div className="flex items-center  gap-5">
-              <p className="name text-9xl font-pixel-grid">in1y4n</p>
-              {/*block cursor*/}
+              <p className="name text-9xl font-pixel-grid"></p>
               <div className="cursor w-10 h-30 bg-secondary mt-0"></div>
             </div>
-            <p className="text-secondary text-2xl font-bold font-pixel-line">
+            <p className="role text-secondary pt-10 text-2xl font-bold font-pixel-line">
               ./ FULL STACK DEVELOPER : )
             </p>
-            <p className="text-gray-200 pt-10 text-xl">
+            <p className="bio text-gray-200 pt-10 text-xl">
               I build systems software, AI applications, and experimental tools.
             </p>
-            <div className="pointer-events-auto mt-5">
+            <div className="proj-button pointer-events-auto mt-5">
               <RetroButton Label="VIEW PROJECTS" />
             </div>
           </div>
