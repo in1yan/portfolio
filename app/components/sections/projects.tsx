@@ -30,38 +30,18 @@ export default function Projects() {
       return -(containerWidth - window.innerWidth);
     };
 
-    const panelsCount = containerRef.current?.children.length || 3;
-    const tl = gsap.timeline({
+    gsap.to(containerRef.current, {
+      x: getScrollAmount,
+      ease: "none",
       scrollTrigger: {
         trigger: ".projects",
         start: "top top",
-        end: () => `+=${window.innerWidth * panelsCount}`, // Extend scroll distance to account for pauses
-        scrub: 1,
+        end: () => `+=${getScrollAmount() * -1}`,
+        scrub: 1.6,
         pin: true,
         invalidateOnRefresh: true,
-        snap: {
-          snapTo: "labels", // Snap exactly to our defined pauses
-          duration: 0.5,
-          ease: "power1.inOut",
-        },
       },
     });
-
-    // Add an initial label and pause so the first image stays pinned for a bit
-    tl.addLabel("panel-0");
-    tl.to({}, { duration: 0.5 });
-
-    // Loop through the rest of the panels
-    for (let i = 0; i < panelsCount - 1; i++) {
-      tl.to(containerRef.current, {
-        x: () => -(window.innerWidth * (i + 1)),
-        ease: "none",
-        duration: 1, // Moving takes twice as long as pausing (1 vs 0.5)
-      });
-      // Add a label for snapping, and a pause (empty tween) before the next move
-      tl.addLabel(`panel-${i + 1}`);
-      tl.to({}, { duration: 0.5 });
-    }
   }, []);
   return (
     <section className="projects relative ">
