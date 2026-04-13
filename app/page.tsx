@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Hero from "./components/sections/hero";
 import { useEffect, useRef } from "react";
 import Projects from "./components/sections/projects";
+import ImgSection from "./components/sections/imgsection";
 
 export default function Home() {
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -127,10 +128,13 @@ export default function Home() {
       </section>
 
       <div className="h-60">
-        <p className="text-secondary font-mono">./Stuff I built</p>
+        <p className="text-secondary text-3xl pl-10 font-mono">
+          ./Stuff I built
+        </p>
       </div>
 
       <Projects />
+      <ImgSection />
     </div>
   );
 }
