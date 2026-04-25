@@ -29,7 +29,7 @@ function initGridOverlay(element: HTMLElement) {
 
   const cols = Math.ceil(width / config.blockSize);
   const rows = Math.ceil(height / config.blockSize);
-  const blocks = [];
+  const blocks: any[] = [];
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
       const block = document.createElement("div");

@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { useEffect } from "react";
 import TextPlugin from "gsap/TextPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Dither from "@/components/Dither";
 export default function Hero() {
   useEffect(() => {
     gsap.registerPlugin(TextPlugin);

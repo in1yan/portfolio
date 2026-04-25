@@ -237,7 +237,7 @@ export default function ScrambleImage({
           alt={altText}
           fill
           sizes="100vw"
-          className="object-cover grayscale-[20%]"
+          className="object-cover grayscale-20"
         />
       </div>
     </>

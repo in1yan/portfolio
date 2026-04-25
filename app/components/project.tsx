@@ -1,5 +1,6 @@
+import Link from "next/link";
 import ScrambleImage from "./ScrambleImage";
-
+import { ArrowUpRightIcon } from "lucide-react";
 interface ProjectProps {
   title: string;
   subtitle: string;
@@ -25,7 +26,7 @@ export default function Project({
 
       <div className="absolute z-10 text-white top-110 inset-0 bg-linear-to-t from-black/90 to-transparent pointer-events-none">
         <div className="flex flex-col">
-          <p className="title text-[25vh] pl-15 font-extrabold uppercase leading-none">
+          <p className="title text-[25vh] pl-15 font-extrabold uppercase leading-none mix-blend-difference">
             {title}
           </p>
           <p className="text-2xl pt-10 pl-20 font-bold uppercase text-secondary">
@@ -40,6 +41,24 @@ export default function Project({
                 </p>
               </div>
             ))}
+          </div>
+          <div className="absolute bottom-10 right-20 flex flex-row gap-6 pointer-events-auto">
+            <div className="flex flex-col">
+              <Link
+                href="#"
+                className="flex items-center text-secondary font-mono text-2xl uppercase font-bold"
+              >
+                View Project
+                <ArrowUpRightIcon />
+              </Link>
+              <Link
+                href="#"
+                className="flex items-center text-secondary font-mono text-2xl uppercase font-bold"
+              >
+                View Code
+                <ArrowUpRightIcon />
+              </Link>
+            </div>
           </div>
         </div>
       </div>

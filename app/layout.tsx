@@ -49,7 +49,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${GeistPixelGrid.variable} ${GeistPixelCircle.variable} ${GeistPixelTriangle.variable} ${GeistPixelLine.variable}  ${GeistPixelSquare.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-screen flex flex-col bg-primary">
-        <div className="fixed top-0 left-0 w-full h-[2px] z-[9999]">
+        <div className="fixed top-0 left-0 w-full h-px z-9999">
           <div
             className="progress-bar h-full bg-secondary origin-left shadow-[0_0_10px_#ff3b3b]"
             style={{ transform: "scaleX(0)" }}

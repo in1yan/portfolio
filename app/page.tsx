@@ -30,10 +30,6 @@ export default function Home() {
     gsap.ticker.add((time) => lenis.raf(1000 * time));
     gsap.ticker.lagSmoothing(0);
 
-    xTo.current = gsap.quickTo(cursorRef.current, "x", {
-      duration: 0.4,
-      ease: "power3",
-    });
     gsap.to(".progress-bar", {
       scaleX: 1,
       scrollTrigger: {
@@ -42,6 +38,10 @@ export default function Home() {
         end: "bottom bottom",
         scrub: true,
       },
+    });
+    xTo.current = gsap.quickTo(cursorRef.current, "x", {
+      duration: 0.4,
+      ease: "power3",
     });
     yTo.current = gsap.quickTo(cursorRef.current, "y", {
       duration: 0.4,
@@ -123,12 +123,12 @@ export default function Home() {
     <div className="w-full relative bg-[#0c0c0b] text-white overflow-x-hidden">
       <div
         ref={cursorRef}
-        className="hidden md:block fixed w-10 h-10 bg-transparent rounded-full pointer-events-none border-2 border-secondary z-[9998] -translate-x-1/2 -translate-y-1/2"
+        className="hidden md:block fixed w-10 h-10 bg-transparent rounded-full pointer-events-none border-2 border-secondary z-9998 -translate-x-1/2 -translate-y-1/2"
       />
 
       <div
         ref={dotRef}
-        className="hidden md:block fixed w-2 h-2 bg-secondary rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2"
+        className="hidden md:block fixed w-2 h-2 bg-secondary rounded-full pointer-events-none z-9999 -translate-x-1/2 -translate-y-1/2"
       />
 
       <section className="min-h-screen flex items-center justify-center px-6 md:px-16">
