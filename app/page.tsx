@@ -6,8 +6,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Hero from "./components/sections/hero";
 import { useEffect, useRef } from "react";
 import Projects from "./components/sections/projects";
-import ImgSection from "./components/sections/imgsection";
-
+import WhoAmI from "./components/sections/whoami";
+import Manifesto from "./components/sections/manifesto";
 export default function Home() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const dotRef = useRef<HTMLDivElement>(null);
@@ -134,15 +134,14 @@ export default function Home() {
       <section className="min-h-screen flex items-center justify-center px-6 md:px-16">
         <Hero />
       </section>
-
-      <div className="h-60">
-        <p className="text-secondary text-3xl pl-10 font-mono">
-          ./Stuff I built
+      <Manifesto />
+      <WhoAmI />
+      <div className="h-90">
+        <p className="uppercase text-secondary text-sm pl-10 font-mono pt-50">
+          / Stuff I Built / 004
         </p>
       </div>
-
       <Projects />
-      <ImgSection />
     </div>
   );
 }
