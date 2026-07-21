@@ -38,7 +38,7 @@ export default function Manifesto() {
             className="flex flex-1 items-center justify-center"
             ref={maniRef}
           >
-            <h1 className="mt-10 text-[9rem] leading-[0.9] font-black uppercase">
+            <h1 className="text-[9rem] leading-[0.9] font-black uppercase">
               <div className="overflow-hidden">
                 <span className="build block">BUILD</span>
               </div>

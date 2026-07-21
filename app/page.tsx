@@ -8,6 +8,7 @@ import { useEffect, useRef } from "react";
 import Projects from "./components/sections/projects";
 import WhoAmI from "./components/sections/whoami";
 import Manifesto from "./components/sections/manifesto";
+import Accomplishments from "./components/sections/accomplishments";
 export default function Home() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const dotRef = useRef<HTMLDivElement>(null);
@@ -136,6 +137,8 @@ export default function Home() {
       </section>
       <Manifesto />
       <WhoAmI />
+      <Accomplishments />
+      {/* <WhoAmI /> */}
       <div className="h-90">
         <p className="uppercase text-secondary text-sm pl-10 font-mono pt-50">
           / Stuff I Built / 004

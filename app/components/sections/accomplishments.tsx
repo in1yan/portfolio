@@ -1,15 +1,16 @@
+
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
 import Table from "../Table";
-export default function WhoAmI() {
+export default function Accomplishments() {
   const tech = [
-    ["LANGS", "TypeScript • Swift • Kotlin"],
-    ["FRONT", "React • Next.js • React Native"],
-    ["BACK", "Node.js • Express • tRPC"],
-    ["DATA", "MongoDB • PostgreSQL • Redis"],
-    ["TOOLS", "Figma • GSAP • Three.js"],
-    ["DEPLOY", "Vercel • AWS • Docker"],
+    ["PRODUCTS", "Launched multiple production apps used by thousands"],
+    ["OPEN SOURCE", "Authored and contributed to several OSS libraries"],
+    ["SPEAKING", "Presented talks and workshops at industry events"],
+    ["LEADERSHIP", "Led cross-functional teams to deliver measurable impact"],
+    ["PATENTS", "Filed patents related to sync and rendering optimizations"],
+    ["EDUCATION", "M.S. Computer Science — relevant coursework"],
   ];
   const titleRef = useRef<HTMLDivElement>(null);
   const tableRef = useRef<HTMLDivElement>(null);
@@ -17,7 +18,7 @@ export default function WhoAmI() {
     gsap.registerPlugin(ScrollTrigger);
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".whoami",
+        trigger: ".acc",
         start: "top top",
         end: "+=1500",
         scrub: true,
@@ -49,38 +50,38 @@ export default function WhoAmI() {
     });
   }, []);
   return (
-    <section className="whoami relative ">
+    <section className="acc relative ">
       <div className="h-screen">
-        <div className="whoami-container flex flex-col h-full w-full pl-10">
+        <div className="acc-container flex flex-col h-full w-full pr-10 items-end">
           {/*subtitle*/}
-          <div className="mt-20">
-            <p className="uppercase text-secondary text-sm pl-10 font-mono">
-              / Who Am I / 003
+          <div className="mt-20 w-full">
+            <p className="uppercase text-secondary text-sm pr-10 font-mono text-right">
+              / Accomplishments / 004
             </p>
           </div>
           {/*Large headings*/}
-          <div className="ml-28 mt-10">
-            <p className="text-xs tracking-[0.5em] uppercase text-secondary">
-              THE CODE
+          <div className="mr-28 mt-10 w-full">
+            <p className="text-xs tracking-[0.5em] uppercase text-secondary pr-10 text-right">
+              HIGHLIGHTS
             </p>
 
             <h1
               ref={titleRef}
-              className="mt-10 text-[7rem] leading-[0.9] font-black uppercase"
+              className="mt-10 text-[7rem] leading-[0.9] font-black uppercase text-right"
             >
               <div className="overflow-hidden">
                 <span className="block">WHAT</span>
               </div>
 
               <div className="overflow-hidden">
-                <span className="block">I BUILD</span>
+                <span className="block">I'VE DONE</span>
               </div>
             </h1>
-            <div ref={tableRef} className="ml-20 mt-10 w-[650px]">
+            <div ref={tableRef} className="ml-250 mt-10 w-[700px]">
               {tech.map(([title, value]) => (
                 <Table key={title} title={title} value={value} />
               ))}
-            </div>
+            </div>xt-right8
           </div>
         </div>
       </div>
