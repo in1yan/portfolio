@@ -14,13 +14,13 @@ const project_data = [
         multi-provider model support (Gemini, Groq), and packaged as an installable CLI (`uv tool install kick-agent`).
       </>
     ),
-    imageSrc: "/demo.png",
+    imageSrc: "/kick.png",
     tags: ["Python", "Pydantic AI", "LLM APIs", "CLI", "uv"],
     githubUrl: "https://github.com/in1yan/kick",
     projectUrl: "https://github.com/in1yan/kick",
   },
   {
-    title: "DEVS OTT",
+    title: "FC OTT",
     subtitle: "Private Video Streaming Platform",
     description: (
       <>
@@ -28,7 +28,7 @@ const project_data = [
         Engineered RESTful API endpoints, OAuth 2.0 authentication, and a responsive React frontend with adaptive playback.
       </>
     ),
-    imageSrc: "/melouz.png",
+    imageSrc: "/ott.png",
     tags: ["FastAPI", "React", "MongoDB", "Beanie", "OAuth 2.0"],
     githubUrl: "https://github.com/in1yan",
     projectUrl: "https://github.com/in1yan",
@@ -42,39 +42,39 @@ const project_data = [
         visual hint overlays, acrylic blur UI, and background idle memory under 70 MB RAM.
       </>
     ),
-    imageSrc: "/ph.png",
+    imageSrc: "/hop.png",
     tags: ["Go", "Wails", "React", "Windows API"],
     githubUrl: "https://github.com/in1yan/hop",
     projectUrl: "https://github.com/in1yan/hop",
   },
-  {
-    title: "VENDOR HUB",
-    subtitle: "Food Stall & Inventory Management",
-    description: (
-      <>
-        Backend-heavy operational management platform tracking 30+ vendors, stalls, and inventory records for university workflows.
-        Authored scalable REST APIs and relational schemas covering vendor onboarding, stock management, and reporting.
-      </>
-    ),
-    imageSrc: "/demo.png",
-    tags: ["FastAPI", "React", "PostgreSQL", "Supabase"],
-    githubUrl: "https://github.com/in1yan",
-    projectUrl: "https://github.com/in1yan",
-  },
-  {
-    title: "RED WHEELS",
-    subtitle: "Cross-Platform Comics Reader",
-    description: (
-      <>
-        Cross-platform mobile application for free web-comics browsing with access to 100+ chapters across multiple titles via a custom REST API backend.
-        Shipped 3 versioned releases within 2 months incorporating active user feedback.
-      </>
-    ),
-    imageSrc: "/me.png",
-    tags: ["React Native", "FastAPI", "Mobile", "REST APIs"],
-    githubUrl: "https://github.com/in1yan/Red-Wheel",
-    projectUrl: "https://github.com/in1yan/Red-Wheel",
-  },
+  // {
+  //   title: "VENDOR HUB",
+  //   subtitle: "Food Stall & Inventory Management",
+  //   description: (
+  //     <>
+  //       Backend-heavy operational management platform tracking 30+ vendors, stalls, and inventory records for university workflows.
+  //       Authored scalable REST APIs and relational schemas covering vendor onboarding, stock management, and reporting.
+  //     </>
+  //   ),
+  //   imageSrc: "/demo.png",
+  //   tags: ["FastAPI", "React", "PostgreSQL", "Supabase"],
+  //   githubUrl: "https://github.com/in1yan",
+  //   projectUrl: "https://github.com/in1yan",
+  // },
+  // {
+  //   title: "RED WHEELS",
+  //   subtitle: "Cross-Platform Comics Reader",
+  //   description: (
+  //     <>
+  //       Cross-platform mobile application for free web-comics browsing with access to 100+ chapters across multiple titles via a custom REST API backend.
+  //       Shipped 3 versioned releases within 2 months incorporating active user feedback.
+  //     </>
+  //   ),
+  //   imageSrc: "/me.png",
+  //   tags: ["React Native", "FastAPI", "Mobile", "REST APIs"],
+  //   githubUrl: "https://github.com/in1yan/Red-Wheel",
+  //   projectUrl: "https://github.com/in1yan/Red-Wheel",
+  // },
 ];
 export default function Projects() {
   const containerRef = useRef<HTMLDivElement>(null);
