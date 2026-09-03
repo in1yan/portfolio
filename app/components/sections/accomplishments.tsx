@@ -5,12 +5,30 @@ import { useEffect, useRef } from "react";
 import Table from "../Table";
 export default function Accomplishments() {
   const tech = [
-    ["PRODUCTS", "Launched multiple production apps used by thousands"],
-    ["OPEN SOURCE", "Authored and contributed to several OSS libraries"],
-    ["SPEAKING", "Presented talks and workshops at industry events"],
-    ["LEADERSHIP", "Led cross-functional teams to deliver measurable impact"],
-    ["PATENTS", "Filed patents related to sync and rendering optimizations"],
-    ["EDUCATION", "M.S. Computer Science — relevant coursework"],
+    [
+      "SIH '25 WINNER",
+      "IoT cotton-picking machine — Selected top team of 100k+ across India",
+    ],
+    [
+      "DEVFEST WINNER",
+      "Shipped 3 full-featured React Native apps within a 24-hour sprint",
+    ],
+    [
+      "CTF RUNNER-UP",
+      "Placed 10th of 50+ teams in Root@localhost CTF (Web & Cryptography)",
+    ],
+    [
+      "IIT TIRUPATI",
+      "Intern @ Navavishkar I-Hub GNSS Division (LoRa mesh protocols R&D)",
+    ],
+    [
+      "DEVS SOCIETY",
+      "Technical Member — Co-led private OTT platform for 1000+ students",
+    ],
+    [
+      "EDUCATION",
+      "B.E. Computer Science @ REC (Expected 2028, CGPA: 8.15)",
+    ],
   ];
   const titleRef = useRef<HTMLDivElement>(null);
   const tableRef = useRef<HTMLDivElement>(null);
@@ -50,7 +68,7 @@ export default function Accomplishments() {
     });
   }, []);
   return (
-    <section className="acc relative ">
+    <section id="accomplishments" className="acc relative ">
       <div className="h-screen">
         <div className="acc-container flex flex-col h-full w-full pr-10 items-end">
           {/*subtitle*/}
@@ -60,7 +78,7 @@ export default function Accomplishments() {
             </p>
           </div>
           {/*Large headings*/}
-          <div className="mr-28 mt-10 w-full">
+          <div className="mr-28 mt-10 w-full flex flex-col items-end">
             <p className="text-xs tracking-[0.5em] uppercase text-secondary pr-10 text-right">
               HIGHLIGHTS
             </p>
@@ -74,18 +92,17 @@ export default function Accomplishments() {
               </div>
 
               <div className="overflow-hidden">
-                <span className="block">I'VE DONE</span>
+                <span className="block">I&apos;VE DONE</span>
               </div>
             </h1>
-            <div ref={tableRef} className="ml-250 mt-10 w-[700px]">
+            <div ref={tableRef} className="mt-10 w-full max-w-[850px] -ml-20 mr-40">
               {tech.map(([title, value]) => (
-                <Table key={title} title={title} value={value} />
+                <Table key={title} title={title} value={value}/>
               ))}
-            </div>xt-right8
+            </div>
           </div>
         </div>
       </div>
-      
     </section>
   );
 }

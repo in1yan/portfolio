@@ -21,8 +21,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "in1y4n",
-  description: "Portfolio",
+  title: "Iniyan V | Full-Stack Developer & AI Systems",
+  description:
+    "Portfolio of Iniyan V - Full-Stack Developer specializing in FastAPI, React, AI agents, and cloud-native systems. Smart India Hackathon 2025 Winner.",
 };
 const items = [
   {
@@ -30,12 +31,28 @@ const items = [
     href: "/",
   },
   {
-    location: "Projects",
-    href: "/projects",
+    location: "About",
+    href: "#whoami",
   },
   {
-    location: "Contact",
-    href: "/contacts",
+    location: "Highlights",
+    href: "#accomplishments",
+  },
+  {
+    location: "Projects",
+    href: "#projects",
+  },
+  {
+    location: "Resume",
+    href: "/_resume.pdf",
+  },
+  {
+    location: "GitHub",
+    href: "https://github.com/in1yan",
+  },
+  {
+    location: "LinkedIn",
+    href: "https://linkedin.com/in/in1y4n",
   },
 ];
 export default function RootLayout({

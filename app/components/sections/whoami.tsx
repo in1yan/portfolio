@@ -4,12 +4,12 @@ import { useEffect, useRef } from "react";
 import Table from "../Table";
 export default function WhoAmI() {
   const tech = [
-    ["LANGS", "TypeScript • Swift • Kotlin"],
-    ["FRONT", "React • Next.js • React Native"],
-    ["BACK", "Node.js • Express • tRPC"],
-    ["DATA", "MongoDB • PostgreSQL • Redis"],
-    ["TOOLS", "Figma • GSAP • Three.js"],
-    ["DEPLOY", "Vercel • AWS • Docker"],
+    ["LANGUAGES", "Python • TypeScript • Go • JavaScript • Java • C/C++"],
+    ["FRAMEWORKS", "FastAPI • React • React Native • Next.js • Flask • LangChain"],
+    ["DATABASES", "PostgreSQL • MongoDB • Redis • Supabase • SQLAlchemy"],
+    ["DEV & CLOUD", "Docker • Linux • Git • GitHub Actions • Azure • uv"],
+    ["AI SYSTEMS", "RAG Pipelines • LLM Tool Calling • LangGraph • Agents"],
+    ["CONCEPTS", "Microservices • CI/CD • REST APIs • DSA • Cryptography"],
   ];
   const titleRef = useRef<HTMLDivElement>(null);
   const tableRef = useRef<HTMLDivElement>(null);
@@ -49,7 +49,7 @@ export default function WhoAmI() {
     });
   }, []);
   return (
-    <section className="whoami relative ">
+    <section id="whoami" className="whoami relative ">
       <div className="h-screen">
         <div className="whoami-container flex flex-col h-full w-full pl-10">
           {/*subtitle*/}

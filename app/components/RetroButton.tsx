@@ -4,9 +4,11 @@ import { useRef } from "react";
 
 type ButtonType = {
   Label: string;
+  href?: string;
+  target?: string;
 };
 
-export default function RetroButton(ButtonInfo: ButtonType) {
+export default function RetroButton({ Label, href = "#", target }: ButtonType) {
   const bgRef = useRef(null);
 
   const handleHover = () => {
@@ -35,8 +37,8 @@ export default function RetroButton(ButtonInfo: ButtonType) {
           ref={bgRef}
           className="absolute bottom-0 left-0 w-full h-full bg-[#ff3b3b] origin-bottom scale-x-0"
         />
-        <Link href="#">
-          <p className="relative">{ButtonInfo.Label}</p>
+        <Link href={href} target={target} rel={target === "_blank" ? "noopener noreferrer" : undefined}>
+          <p className="relative">{Label}</p>
         </Link>
       </div>
       <span className="text-3xl">]</span>

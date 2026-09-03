@@ -7,6 +7,8 @@ interface ProjectProps {
   description: React.ReactNode;
   imageSrc: string;
   tags: string[];
+  githubUrl?: string;
+  projectUrl?: string;
   isFirst?: boolean;
 }
 
@@ -16,6 +18,8 @@ export default function Project({
   description,
   imageSrc,
   tags,
+  githubUrl,
+  projectUrl,
   isFirst,
 }: ProjectProps) {
   return (
@@ -32,32 +36,40 @@ export default function Project({
           <p className="text-2xl pt-10 pl-20 font-bold uppercase text-secondary">
             {subtitle}
           </p>
-          <p className="text-sm pl-20 text-gray-400">{description}</p>
-          <div className="flex pl-20 pt-7 flex-row gap-5">
+          <div className="text-sm pl-20 max-w-3xl text-gray-300 leading-relaxed font-mono pt-2">{description}</div>
+          <div className="flex flex-wrap pl-20 pt-7 gap-3">
             {tags.map((tag, index) => (
               <div key={index} className="bg-white pointer-events-auto">
-                <p className="text-black font-mono uppercase font-bold p-1 text-sm">
+                <p className="text-black font-mono uppercase font-bold px-2 py-1 text-xs sm:text-sm">
                   {tag}
                 </p>
               </div>
             ))}
           </div>
           <div className="absolute bottom-10 right-20 flex flex-row gap-6 pointer-events-auto">
-            <div className="flex flex-col">
-              <Link
-                href="#"
-                className="flex items-center text-secondary font-mono text-2xl uppercase font-bold"
-              >
-                View Project
-                <ArrowUpRightIcon />
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center text-secondary font-mono text-2xl uppercase font-bold"
-              >
-                View Code
-                <ArrowUpRightIcon />
-              </Link>
+            <div className="flex flex-col gap-2">
+              {projectUrl && (
+                <Link
+                  href={projectUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-secondary font-mono text-xl sm:text-2xl uppercase font-bold hover:text-white transition-colors"
+                >
+                  View Project
+                  <ArrowUpRightIcon className="w-5 h-5" />
+                </Link>
+              )}
+              {githubUrl && (
+                <Link
+                  href={githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-secondary font-mono text-xl sm:text-2xl uppercase font-bold hover:text-white transition-colors"
+                >
+                  View Code
+                  <ArrowUpRightIcon className="w-5 h-5" />
+                </Link>
+              )}
             </div>
           </div>
         </div>

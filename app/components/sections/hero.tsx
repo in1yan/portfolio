@@ -67,13 +67,14 @@ export default function Hero() {
               <div className="block-cursor w-10 h-30 bg-secondary mt-0"></div>
             </div>
             <p className="role text-secondary pt-10 text-2xl font-bold font-pixel-line">
-              ./ FULL STACK DEVELOPER : )
+              ./ FULL STACK DEVELOPER & AI SYSTEMS : )
             </p>
             <p className="bio text-gray-200 pt-10 text-xl">
               I build systems software, AI applications, and experimental tools.
             </p>
-            <div className="proj-button pointer-events-auto mt-5">
-              <RetroButton Label="VIEW PROJECTS" />
+            <div className="proj-button pointer-events-auto mt-5 flex items-center gap-6">
+              <RetroButton Label="VIEW PROJECTS" href="#projects" />
+              <RetroButton Label="VIEW RESUME" href="/_resume.pdf" target="_blank" />
             </div>
           </div>
         </div>
