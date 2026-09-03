@@ -132,9 +132,7 @@ export default function Home() {
         className="hidden md:block fixed w-2 h-2 bg-secondary rounded-full pointer-events-none z-9999 -translate-x-1/2 -translate-y-1/2"
       />
 
-      <section className="min-h-screen flex items-center justify-center px-6 md:px-16">
-        <Hero />
-      </section>
+      <Hero />
       <Manifesto />
       <WhoAmI />
       <Accomplishments />
