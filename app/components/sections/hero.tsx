@@ -1,44 +1,39 @@
+"use client";
+
 import Image from "next/image";
 import RetroButton from "../RetroButton";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { TextPlugin } from "gsap/TextPlugin";
 
-export default function Hero() {
+interface HeroProps {
+  isLoaded?: boolean;
+}
+
+export default function Hero({ isLoaded = true }: HeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     gsap.registerPlugin(TextPlugin);
 
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        defaults: { ease: "none" },
+    if (!isLoaded) {
+      gsap.set([".hero-name-wrap", ".role", ".bio", ".proj-button"], {
+        y: 35,
+        opacity: 0,
       });
-      tl.delay(3)
-      tl.to(".name", {
-        text: {
-          value: "in1y4n",
-          delimiter: "",
-        },
-        duration: 1.2,
-      })
-        .to({}, { duration:  1})
-        .to(".name", {
-          text: {
-            value: "",
-            delimiter: "",
-          },
-          duration: 0.6,
-        })
-        .to({}, { duration: 0.2 })
-        .to(".name", {
-          text: {
-            value: "Iniyan",
-            delimiter: "",
-          },
-          duration: 1.2,
-        });
+      gsap.set(".name", { text: "" });
+      return;
+    }
 
+    const ctx = gsap.context(() => {
+      // Set initial states
+      gsap.set([".hero-name-wrap", ".role", ".bio", ".proj-button"], {
+        y: 35,
+        opacity: 0,
+      });
+      gsap.set(".name", { text: "" });
+
+      // Cursor blinking animation
       gsap.fromTo(
         ".block-cursor",
         {
@@ -50,12 +45,80 @@ export default function Hero() {
           duration: 0.35,
           yoyo: true,
           ease: "power2.inOut",
-        },
+        }
       );
+
+      const tl = gsap.timeline({
+        defaults: { ease: "power3.out" },
+      });
+
+      // Stagger reveal hero text content elements
+      tl.to(".hero-name-wrap", {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+      })
+        .to(
+          ".name",
+          {
+            text: {
+              value: "in1y4n",
+              delimiter: "",
+            },
+            duration: 1.0,
+            ease: "none",
+          },
+          "-=0.4"
+        )
+        .to(
+          ".role",
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+          },
+          "-=0.6"
+        )
+        .to(
+          ".bio",
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+          },
+          "-=0.4"
+        )
+        .to(
+          ".proj-button",
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+          },
+          "-=0.4"
+        )
+        .to({}, { duration: 0.8 })
+        .to(".name", {
+          text: {
+            value: "",
+            delimiter: "",
+          },
+          duration: 0.5,
+          ease: "none",
+        })
+        .to({}, { duration: 0.2 })
+        .to(".name", {
+          text: {
+            value: "Iniyan",
+            delimiter: "",
+          },
+          duration: 1.0,
+          ease: "none",
+        });
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isLoaded]);
 
   return (
     <section
@@ -75,17 +138,17 @@ export default function Hero() {
 
       <div className="relative z-10 w-full max-w-6xl pointer-events-none">
         <div className="flex flex-col items-start">
-          <div className="flex items-center gap-5 min-h-[120px]">
-            <p className="name text-8xl md:text-9xl font-pixel-grid">in1y4n</p>
+          <div className="hero-name-wrap flex items-center gap-5 min-h-[120px] opacity-0">
+            <p className="name text-8xl md:text-9xl font-pixel-grid"></p>
             <div className="block-cursor w-8 md:w-10 h-20 md:h-28 bg-secondary mt-0"></div>
           </div>
-          <p className="role text-secondary pt-8 text-xl md:text-2xl font-bold font-pixel-line">
+          <p className="role text-secondary pt-8 text-xl md:text-2xl font-bold font-pixel-line opacity-0">
             ./ FULL STACK DEVELOPER & AI SYSTEMS : )
           </p>
-          <p className="bio text-gray-200 pt-6 text-lg md:text-xl max-w-2xl">
+          <p className="bio text-gray-200 pt-6 text-lg md:text-xl max-w-2xl opacity-0">
             I build systems software, AI applications, and experimental tools.
           </p>
-          <div className="proj-button pointer-events-auto flex items-center gap-6">
+          <div className="proj-button pointer-events-auto flex items-center gap-6 opacity-0">
             <RetroButton Label="VIEW PROJECTS" href="#projects" />
             <RetroButton Label="VIEW RESUME" href="/_resume.pdf" target="_blank" />
           </div>

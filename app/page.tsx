@@ -4,13 +4,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Hero from "./components/sections/hero";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Preloader from "./components/Preloader";
 import Projects from "./components/sections/projects";
 import WhoAmI from "./components/sections/whoami";
 import Manifesto from "./components/sections/manifesto";
 import Accomplishments from "./components/sections/accomplishments";
 export default function Home() {
+  const [isLoaded, setIsLoaded] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
   const dotRef = useRef<HTMLDivElement>(null);
 
@@ -123,7 +124,7 @@ export default function Home() {
 
   return (
     <div className="w-full relative bg-[#0c0c0b] text-white overflow-x-hidden">
-      <Preloader />
+      <Preloader onComplete={() => setIsLoaded(true)} />
       <div
         ref={cursorRef}
         className="hidden md:block fixed w-10 h-10 bg-transparent rounded-full pointer-events-none border-2 border-secondary z-9998 -translate-x-1/2 -translate-y-1/2"
@@ -134,7 +135,7 @@ export default function Home() {
         className="hidden md:block fixed w-2 h-2 bg-secondary rounded-full pointer-events-none z-9999 -translate-x-1/2 -translate-y-1/2"
       />
 
-      <Hero />
+      <Hero isLoaded={isLoaded} />
       <Manifesto />
       <WhoAmI />
       <Accomplishments />
