@@ -14,7 +14,7 @@ export default function Hero() {
       const tl = gsap.timeline({
         defaults: { ease: "none" },
       });
-
+      tl.delay(3)
       tl.to(".name", {
         text: {
           value: "in1y4n",

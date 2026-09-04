@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Hero from "./components/sections/hero";
 import { useEffect, useRef } from "react";
+import Preloader from "./components/Preloader";
 import Projects from "./components/sections/projects";
 import WhoAmI from "./components/sections/whoami";
 import Manifesto from "./components/sections/manifesto";
@@ -122,6 +123,7 @@ export default function Home() {
 
   return (
     <div className="w-full relative bg-[#0c0c0b] text-white overflow-x-hidden">
+      <Preloader />
       <div
         ref={cursorRef}
         className="hidden md:block fixed w-10 h-10 bg-transparent rounded-full pointer-events-none border-2 border-secondary z-9998 -translate-x-1/2 -translate-y-1/2"

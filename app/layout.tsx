@@ -21,9 +21,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Iniyan V | Full-Stack Developer & AI Systems",
+  title: "in1y4n",
   description:
-    "Portfolio of Iniyan V - Full-Stack Developer specializing in FastAPI, React, AI agents, and cloud-native systems. Smart India Hackathon 2025 Winner.",
+    "portfolio",
 };
 const items = [
   {
