@@ -140,8 +140,8 @@ export default function Home() {
       <Manifesto />
       <WhoAmI />
       <Accomplishments />
-      <div className="h-90">
-        <p className="uppercase text-secondary text-sm pl-10 font-mono pt-50">
+      <div className="h-48 sm:h-64 md:h-90">
+        <p className="uppercase text-secondary text-xs sm:text-sm px-6 sm:px-12 md:pl-10 font-mono pt-24 sm:pt-36 md:pt-50">
           / Stuff I Built / 005
         </p>
       </div>

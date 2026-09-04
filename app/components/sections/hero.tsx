@@ -123,7 +123,7 @@ export default function Hero({ isLoaded = true }: HeroProps) {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen w-full flex items-end justify-start px-8 md:px-20 pb-16 md:pb-24 overflow-hidden"
+      className="relative min-h-screen w-full flex items-end justify-start px-6 sm:px-10 md:px-20 pb-12 sm:pb-16 md:pb-24 overflow-hidden"
     >
       <div className="absolute inset-0 z-0">
         <Image
@@ -138,17 +138,17 @@ export default function Hero({ isLoaded = true }: HeroProps) {
 
       <div className="relative z-10 w-full max-w-6xl pointer-events-none">
         <div className="flex flex-col items-start">
-          <div className="hero-name-wrap flex items-center gap-5 min-h-[120px] opacity-0">
-            <p className="name text-8xl md:text-9xl font-pixel-grid"></p>
-            <div className="block-cursor w-8 md:w-10 h-20 md:h-28 bg-secondary mt-0"></div>
+          <div className="hero-name-wrap flex items-center gap-3 sm:gap-5 min-h-[70px] sm:min-h-[100px] md:min-h-[120px] opacity-0">
+            <p className="name text-5xl sm:text-7xl md:text-9xl font-pixel-grid"></p>
+            <div className="block-cursor w-5 sm:w-8 md:w-10 h-12 sm:h-20 md:h-28 bg-secondary mt-0"></div>
           </div>
-          <p className="role text-secondary pt-8 text-xl md:text-2xl font-bold font-pixel-line opacity-0">
+          <p className="role text-secondary pt-4 sm:pt-8 text-sm sm:text-xl md:text-2xl font-bold font-pixel-line opacity-0">
             ./ FULL STACK DEVELOPER & AI SYSTEMS : )
           </p>
-          <p className="bio text-gray-200 pt-6 text-lg md:text-xl max-w-2xl opacity-0">
+          <p className="bio text-gray-200 pt-3 sm:pt-6 text-sm sm:text-lg md:text-xl max-w-2xl opacity-0">
             I build systems software, AI applications, and experimental tools.
           </p>
-          <div className="proj-button pointer-events-auto flex items-center gap-6 opacity-0">
+          <div className="proj-button pointer-events-auto flex flex-wrap items-center gap-4 sm:gap-6 opacity-0">
             <RetroButton Label="VIEW PROJECTS" href="#projects" />
             <RetroButton Label="VIEW RESUME" href="/_resume.pdf" target="_blank" />
           </div>

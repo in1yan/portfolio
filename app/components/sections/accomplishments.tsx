@@ -68,24 +68,24 @@ export default function Accomplishments() {
     });
   }, []);
   return (
-    <section id="accomplishments" className="acc relative ">
+    <section id="accomplishments" className="acc relative w-full overflow-hidden">
       <div className="h-screen">
-        <div className="acc-container flex flex-col h-full w-full pr-10 items-end">
+        <div className="acc-container flex flex-col h-full w-full px-6 sm:px-12 md:pr-10 items-end">
           {/*subtitle*/}
-          <div className="mt-20 w-full">
-            <p className="uppercase text-secondary text-sm pr-10 font-mono text-right">
+          <div className="mt-16 sm:mt-20 w-full">
+            <p className="uppercase text-secondary text-sm md:pr-10 font-mono text-right">
               / Accomplishments / 004
             </p>
           </div>
           {/*Large headings*/}
-          <div className="mr-28 mt-10 w-full flex flex-col items-end">
-            <p className="text-xs tracking-[0.5em] uppercase text-secondary pr-10 text-right">
+          <div className="mr-0 sm:mr-6 md:mr-28 mt-6 sm:mt-10 w-full flex flex-col items-end">
+            <p className="text-xs tracking-[0.3em] sm:tracking-[0.5em] uppercase text-secondary md:pr-10 text-right">
               HIGHLIGHTS
             </p>
 
             <h1
               ref={titleRef}
-              className="mt-10 text-[7rem] leading-[0.9] font-black uppercase text-right"
+              className="mt-4 sm:mt-10 text-5xl sm:text-7xl md:text-[7rem] leading-[0.9] font-black uppercase text-right"
             >
               <div className="overflow-hidden">
                 <span className="block">WHAT</span>
@@ -95,9 +95,9 @@ export default function Accomplishments() {
                 <span className="block">I&apos;VE DONE</span>
               </div>
             </h1>
-            <div ref={tableRef} className="mt-10 w-full max-w-[850px] -ml-20 mr-40">
+            <div ref={tableRef} className="mt-6 sm:mt-10 w-full max-w-[850px] mr-0 md:mr-10 lg:mr-20 pl-4 sm:pl-0">
               {tech.map(([title, value]) => (
-                <Table key={title} title={title} value={value}/>
+                <Table key={title} title={title} value={value} align="left" />
               ))}
             </div>
           </div>

@@ -74,17 +74,17 @@ export default function Footer() {
       ref={sectionRef}
       className="footer contact-section relative w-full bg-[#0c0c0b] text-white overflow-hidden"
     >
-      <div className="h-screen w-full relative flex flex-col justify-between p-6 sm:p-10 md:p-14 select-none">
+      <div className="h-screen w-full relative flex flex-col justify-between p-4 sm:p-8 md:p-14 select-none">
         {/* Top subtitle header */}
         <div className="relative z-30 flex justify-between items-center text-xs font-mono uppercase tracking-widest text-gray-400">
-          <p className="text-secondary font-mono uppercase text-sm">
+          <p className="text-secondary font-mono uppercase text-xs sm:text-sm">
             / tail portfolio.txt / contact / 006
           </p>
         </div>
 
         {/* Center Hands: Creation of Adam animation */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-auto overflow-hidden z-10">
-          <div className="relative w-full max-w-7xl h-[65vh] sm:h-[75vh] md:h-[85vh] flex items-center justify-center">
+          <div className="relative w-full max-w-7xl h-[50vh] sm:h-[65vh] md:h-[80vh] flex items-center justify-center">
             {/* Left Hand */}
             <div
               ref={leftHandRef}
@@ -95,7 +95,7 @@ export default function Footer() {
                 altText="Adam's Creation - Left Hand"
                 className="relative w-full h-full overflow-hidden"
                 imageClassName="object-contain object-right grayscale-20 select-none"
-                sizes="50vw"
+                sizes="(max-width: 768px) 50vw, 40vw"
               />
             </div>
 
@@ -109,7 +109,7 @@ export default function Footer() {
                 altText="Adam's Creation - Right Hand"
                 className="relative w-full h-full overflow-hidden"
                 imageClassName="object-contain object-left grayscale-20 select-none"
-                sizes="50vw"
+                sizes="(max-width: 768px) 50vw, 40vw"
               />
             </div>
           </div>
@@ -118,14 +118,14 @@ export default function Footer() {
         {/* Foreground Content: Title & Interactive Links */}
         <div
           ref={contentRef}
-          className="relative z-30 flex flex-col items-center justify-center my-auto pointer-events-none"
+          className="relative z-30 flex flex-col items-center justify-center my-auto px-4 pointer-events-none"
         >
-          <h2 className="text-4xl sm:text-6xl md:text-8xl font-black uppercase font-pixel-grid tracking-tight mix-blend-difference text-center text-white">
+          <h2 className="text-3xl sm:text-6xl md:text-8xl font-black uppercase font-pixel-grid tracking-tight mix-blend-difference text-center text-white">
             LET&apos;S CREATE
           </h2>
 
           {/* Social / Action buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-4 pointer-events-auto">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mt-2 sm:mt-4 pointer-events-auto">
             <RetroButton Label="GITHUB" href="https://github.com/in1yan" target="_blank" />
             <RetroButton Label="LINKEDIN" href="https://linkedin.com/in/in1y4n" target="_blank" />
             <RetroButton Label="MAIL" href="mailto:viniyan563@gmail.com" target="_blank" />
@@ -134,8 +134,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Status Bar */}
-        <div className="relative z-30 flex justify-between items-center text-xs font-mono uppercase tracking-widest text-gray-500 pt-4 border-t border-white/10">
-          <span>© 2026 INIYAN — END OF FILE</span>
+        <div className="relative z-30 flex justify-between items-center text-[10px] sm:text-xs font-mono uppercase tracking-widest text-gray-500 pt-3 sm:pt-4 border-t border-white/10">
+          <span>© 2026 INIYAN — [EOF]</span>
         </div>
       </div>
     </section>

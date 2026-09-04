@@ -26,8 +26,8 @@ export default function RetroButton({ Label, href = "#", target }: ButtonType) {
     });
   };
   return (
-    <div className="font-pixel-triangle text-2xl pt-20 inline-flex items-center">
-      <span className="text-3xl">[</span>
+    <div className="font-pixel-triangle text-lg sm:text-2xl pt-6 sm:pt-12 md:pt-16 inline-flex items-center">
+      <span className="text-xl sm:text-3xl">[</span>
       <div
         className="button-label overflow-hidden inline-block relative"
         onMouseEnter={handleHover}
@@ -41,7 +41,7 @@ export default function RetroButton({ Label, href = "#", target }: ButtonType) {
           <p className="relative">{Label}</p>
         </Link>
       </div>
-      <span className="text-3xl">]</span>
+      <span className="text-xl sm:text-3xl">]</span>
     </div>
   );
 }

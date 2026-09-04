@@ -49,24 +49,24 @@ export default function WhoAmI() {
     });
   }, []);
   return (
-    <section id="whoami" className="whoami relative ">
+    <section id="whoami" className="whoami relative w-full overflow-hidden">
       <div className="h-screen">
-        <div className="whoami-container flex flex-col h-full w-full pl-10">
+        <div className="whoami-container flex flex-col h-full w-full px-6 sm:px-12 md:pl-10">
           {/*subtitle*/}
-          <div className="mt-20">
-            <p className="uppercase text-secondary text-sm pl-10 font-mono">
+          <div className="mt-16 sm:mt-20">
+            <p className="uppercase text-secondary text-sm md:pl-10 font-mono">
               / Who Am I / 003
             </p>
           </div>
           {/*Large headings*/}
-          <div className="ml-28 mt-10">
-            <p className="text-xs tracking-[0.5em] uppercase text-secondary">
+          <div className="ml-0 sm:ml-6 md:ml-28 mt-6 sm:mt-10">
+            <p className="text-xs tracking-[0.3em] sm:tracking-[0.5em] uppercase text-secondary">
               THE CODE
             </p>
 
             <h1
               ref={titleRef}
-              className="mt-10 text-[7rem] leading-[0.9] font-black uppercase"
+              className="mt-4 sm:mt-10 text-5xl sm:text-7xl md:text-[7rem] leading-[0.9] font-black uppercase"
             >
               <div className="overflow-hidden">
                 <span className="block">WHAT</span>
@@ -76,7 +76,7 @@ export default function WhoAmI() {
                 <span className="block">I BUILD</span>
               </div>
             </h1>
-            <div ref={tableRef} className="ml-20 mt-10 w-[650px]">
+            <div ref={tableRef} className="ml-0 sm:ml-4 md:ml-20 mt-6 sm:mt-10 w-full max-w-[650px] pr-4 sm:pr-0">
               {tech.map(([title, value]) => (
                 <Table key={title} title={title} value={value} />
               ))}
