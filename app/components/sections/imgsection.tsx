@@ -208,7 +208,7 @@ export default function ImgSection() {
 
       <div ref={containerRef} className="hover-img">
         <Image
-          src="/demo.png"
+          src="/contact.png"
           sizes="100vw"
           fill
           alt="hover-image"

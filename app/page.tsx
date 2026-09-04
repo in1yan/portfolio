@@ -10,6 +10,7 @@ import Projects from "./components/sections/projects";
 import WhoAmI from "./components/sections/whoami";
 import Manifesto from "./components/sections/manifesto";
 import Accomplishments from "./components/sections/accomplishments";
+import Footer from "./components/sections/footer";
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -145,6 +146,7 @@ export default function Home() {
         </p>
       </div>
       <Projects />
+      <Footer />
     </div>
   );
 }

@@ -21,6 +21,35 @@ export default function Preloader({ onComplete }: PreloaderProps) {
     document.body.style.overflow = "hidden";
 
     const ctx = gsap.context(() => {
+      // Calculate responsive target scale so counter fits screen bounds at 100
+      let startScale = 0.6;
+      let targetScale = 2.4;
+
+      if (counterTextRef.current && containerRef.current) {
+        counterTextRef.current.textContent = "100";
+        gsap.set(counterTextRef.current, { scale: 1 });
+        const rect = counterTextRef.current.getBoundingClientRect();
+        const paddingX = window.innerWidth < 768 ? 64 : 128;
+        const paddingY = window.innerWidth < 768 ? 160 : 220;
+        const availableWidth = Math.max(containerRef.current.clientWidth - paddingX, 200);
+        const availableHeight = Math.max(containerRef.current.clientHeight - paddingY, 150);
+
+        const naturalWidth = rect.width || 300;
+        const naturalHeight = rect.height || 150;
+
+        const maxFitScale = Math.min(
+          availableWidth / naturalWidth,
+          availableHeight / naturalHeight
+        );
+
+        targetScale = Math.max(1.2, Math.min(maxFitScale, 3.8));
+        startScale = Math.max(0.4, targetScale * 0.35);
+
+        // Reset text and initial scale
+        counterTextRef.current.textContent = "00";
+        gsap.set(counterTextRef.current, { scale: startScale });
+      }
+
       const counterObj = { value: 0 };
       const tl = gsap.timeline({
         onComplete: () => {
@@ -30,22 +59,24 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         },
       });
 
-      // 1. Count up to 100 and fill progress bar
+      // 1. Count up to 100, fill progress bar, and scale counter to fit screen
       tl.to(
         counterObj,
         {
           value: 100,
-          duration: 2.0,
+          duration: 5,
           ease: "power2.inOut",
           onUpdate: () => {
             if (counterTextRef.current) {
               const val = Math.floor(counterObj.value);
               counterTextRef.current.textContent =
                 val === 100 ? "100" : String(val).padStart(2, "0");
-              const scale = 1 + (counterObj.value / 100) * 0.2;
+
+              const progress = counterObj.value / 100;
+              const currentScale = startScale + (targetScale - startScale) * progress;
 
               gsap.set(counterTextRef.current, {
-                scale,
+                scale: currentScale,
               });
             }
           },
@@ -57,12 +88,11 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         progressFillRef.current,
         {
           scaleX: 1,
-          duration: 2.0,
+          duration: 2.2,
           ease: "power2.inOut",
         },
         0
       );
-
       // 2. Hide counter and progress bar
       tl.to(
         bottomSectionRef.current,
@@ -79,14 +109,13 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       tl.fromTo(
         centerBoxRef.current,
         {
-          opacity: 0,
-          scale: 0.8,
+          opacity: 1,
+          clipPath: "inset(50% 50% 50% 50%)",
         },
         {
-          opacity: 1,
-          scale: 1,
-          duration: 0.6,
-          ease: "power3.out",
+          clipPath: "inset(0% 0% 0% 0%)",
+          duration: 0.7,
+          ease: "power4.inOut",
         },
         "-=0.1"
       );
@@ -98,8 +127,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       tl.to(centerBoxRef.current, {
         width: "100vw",
         height: "100vh",
-        borderRadius: "0px",
-        duration: 0.9,
+        duration: 1,
         ease: "power4.inOut",
       });
 
@@ -155,7 +183,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         <div className="flex items-baseline">
           <p
             ref={counterTextRef}
-            className="text-[20vw] sm:text-[18vw] md:text-[15vw] font-pixel-grid font-bold leading-none tracking-tighter"
+            className="text-[16vw] sm:text-[14vw] md:text-[12vw] font-pixel-grid font-bold leading-none tracking-tighter inline-block origin-bottom-left select-none"
           >
             00
           </p>

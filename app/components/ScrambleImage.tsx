@@ -181,11 +181,17 @@ function initGridOverlay(element: HTMLElement) {
 interface ScrambleImageProps {
   imageSrc: string;
   altText: string;
+  className?: string;
+  imageClassName?: string;
+  sizes?: string;
 }
 
 export default function ScrambleImage({
   imageSrc,
   altText,
+  className = "absolute inset-0 w-full h-full overflow-hidden",
+  imageClassName = "object-cover grayscale-20",
+  sizes = "100vw",
 }: ScrambleImageProps) {
   const imageContainerRef = useRef<HTMLDivElement>(null);
 
@@ -230,14 +236,14 @@ export default function ScrambleImage({
       {/* Image container that receives the mouse events and grid overlay */}
       <div
         ref={imageContainerRef}
-        className="absolute inset-0 w-full h-full overflow-hidden"
+        className={className}
       >
         <Image
           src={imageSrc}
           alt={altText}
           fill
-          sizes="100vw"
-          className="object-cover grayscale-20"
+          sizes={sizes}
+          className={imageClassName}
         />
       </div>
     </>
